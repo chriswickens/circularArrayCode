@@ -1,36 +1,116 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 #define ARRAY_MAX_SIZE 5
 
 typedef struct CircularArray
 {
-	int* array;
+	int array[ARRAY_MAX_SIZE];
+	int elementCount;
 	int read;
 	int write;
 
 } CircularArray;
 
+bool isEmpty(CircularArray* arrayToCheck)
+{
+	if (arrayToCheck->elementCount == 0)
+	{
+		printf("Array is empty!\n");
+		return true;
+	}
 
-void initializeCircularArray(CircularArray* arrayToInitialize)
+	return false;
+}
+
+bool isFull(CircularArray* arrayToCheck)
+{
+	if (arrayToCheck->elementCount == ARRAY_MAX_SIZE)
+	{
+		printf("Array is full!\n");
+		return true;
+	}
+	return false;
+}
+
+CircularArray* initializeCircularArray()
 {
 	CircularArray* newArray = (CircularArray*)malloc(sizeof(CircularArray));
 	if (newArray == NULL)
 	{
-		printf("Error allocating memory");
+		printf("Error allocating memory\n");
 		exit(EXIT_FAILURE);
 	}
 
-	newArray->array = (int*)malloc(ARRAY_MAX_SIZE * sizeof(int));
+	newArray->elementCount = 0;
 	newArray->read = 0;
 	newArray->write = 0;
+	return newArray;
+}
+
+void insertValueIntoArray(CircularArray* arrayToAddTo, int newValue)
+{
+	if (isFull(arrayToAddTo))
+	{
+		return;
+	}
+
+	arrayToAddTo->elementCount++;
+	arrayToAddTo->array[arrayToAddTo->write] = newValue;
+	arrayToAddTo->write = (arrayToAddTo->write + 1) % ARRAY_MAX_SIZE;
+}
+
+int dequeueFromArray(CircularArray* arrayToDequeue)
+{
+	if (isEmpty(arrayToDequeue))
+	{
+		return -1;
+	}
+	int valueToDequeue = arrayToDequeue->array[arrayToDequeue->read];
+	arrayToDequeue->elementCount--;
+	arrayToDequeue->read = (arrayToDequeue->read + 1) % ARRAY_MAX_SIZE;
+	return valueToDequeue;
+}
+
+void printCircularArray(CircularArray* arrayToPrint)
+{
+	int currentIndex = arrayToPrint->read;
+	int count = 0;
+	while (count < arrayToPrint->elementCount)
+	{
+		printf("Circular Index: %d, Value at index: %d\n", currentIndex, arrayToPrint->array[currentIndex]);
+		count++;
+		currentIndex = (currentIndex + 1) % ARRAY_MAX_SIZE;
+	}
 }
 
 int main(void)
 {
-	CircularArray* theArray = NULL;
-	initializeCircularArray(&theArray);
+	CircularArray* theArray = initializeCircularArray();
 
+	isEmpty(theArray);
+	isFull(theArray);
+
+	insertValueIntoArray(theArray, 100);
+	insertValueIntoArray(theArray, 200);
+	insertValueIntoArray(theArray, 300);
+	insertValueIntoArray(theArray, 400);
+	insertValueIntoArray(theArray, 500);
+	printf("Out 1: \n");
+	printCircularArray(theArray);
+	insertValueIntoArray(theArray, 600);
+	printf("Out 2: \n");
+	printCircularArray(theArray);
+
+	printf("Dequeue 1: \n");
+	printf("%d", dequeueFromArray(theArray));
+	printf("Out 3: \n");
+	printCircularArray(theArray);
+	insertValueIntoArray(theArray, 5010);
+	printf("Out 4: \n");
+	printCircularArray(theArray);
+	free(theArray); // Free allocated memory
 
 	return 0;
 }
