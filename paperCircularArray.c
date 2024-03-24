@@ -95,26 +95,30 @@ int main(void)
 
 	isEmpty(theArray);
 	isFull(theArray);
+	printf("\n");
 
 	insertValueIntoArray(theArray, 100);
 	insertValueIntoArray(theArray, 200);
 	insertValueIntoArray(theArray, 300);
 	insertValueIntoArray(theArray, 400);
 	insertValueIntoArray(theArray, 500);
-	printf("Out 1: \n");
-	printCircularArray(theArray);
-	insertValueIntoArray(theArray, 600);
-	printf("Out 2: \n");
+
+	printf("After filling array: \n");
 	printCircularArray(theArray);
 
-	printf("Dequeue 1: \n");
-	printf("%d\n", dequeueFromArray(theArray));
-	printf("Out 3: \n");
+	printf("\nInsertion attempted on full array: \n");
+	insertValueIntoArray(theArray, 600);
 	printCircularArray(theArray);
+
+	printf("\nDequeue 100: \n");
+	printf("Value dequeued: %d\n", dequeueFromArray(theArray));
+	printCircularArray(theArray);
+
 	insertValueIntoArray(theArray, 5010);
-	printf("Out 4: \n");
+	printf("\nAdded a new element (5010): \n");
 	printCircularArray(theArray);
-	printf("Dequeue 1: \n");
+	
+	printf("\nDequeue 1: \n");
 	printf("%d\n", dequeueFromArray(theArray));
 	printf("Out 4: \n");
 	printCircularArray(theArray);
