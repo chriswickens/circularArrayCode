@@ -75,6 +75,10 @@ int dequeueFromArray(CircularArray* arrayToDequeue)
 
 void printCircularArray(CircularArray* arrayToPrint)
 {
+	if (isEmpty(arrayToPrint))
+	{
+		return;
+	}
 	int currentIndex = arrayToPrint->read;
 	int count = 0;
 	while (count < arrayToPrint->elementCount)
@@ -104,13 +108,60 @@ int main(void)
 	printCircularArray(theArray);
 
 	printf("Dequeue 1: \n");
-	printf("%d", dequeueFromArray(theArray));
+	printf("%d\n", dequeueFromArray(theArray));
 	printf("Out 3: \n");
 	printCircularArray(theArray);
 	insertValueIntoArray(theArray, 5010);
 	printf("Out 4: \n");
 	printCircularArray(theArray);
-	free(theArray); // Free allocated memory
+	printf("Dequeue 1: \n");
+	printf("%d\n", dequeueFromArray(theArray));
+	printf("Out 4: \n");
+	printCircularArray(theArray);
+	printf("Dequeue 1: \n");
+	printf("%d\n", dequeueFromArray(theArray));
+	printf("Out 4: \n");
+	printCircularArray(theArray);
+	printf("Dequeue 1: \n");
+	printf("%d\n", dequeueFromArray(theArray));
+	printf("Out 4: \n");
+	printCircularArray(theArray);
+	printf("Dequeue 1: \n");
+	printf("%d\n", dequeueFromArray(theArray));
+	printf("Out 4: \n");
+	printCircularArray(theArray);
+	printf("Dequeue 1: \n");
+	printf("%d\n", dequeueFromArray(theArray));
+	printf("Out 4: \n");
+	printCircularArray(theArray);
+	printf("Dequeue 1: \n");
+	printf("%d\n", dequeueFromArray(theArray));
+	printf("Out 4: \n");
+	printCircularArray(theArray);
+	insertValueIntoArray(theArray, 100);
+	printf("Out 4: \n");
+	printCircularArray(theArray);
 
+	insertValueIntoArray(theArray, 200);
+	printf("Out 4: \n");
+	printCircularArray(theArray);
+
+	insertValueIntoArray(theArray, 300);
+	printf("Out 4: \n");
+	printCircularArray(theArray);
+
+	insertValueIntoArray(theArray, 400);
+	printf("Out 4: \n");
+	printCircularArray(theArray);
+
+	insertValueIntoArray(theArray, 500);
+	printf("Out 4: \n");
+	printCircularArray(theArray);
+
+	insertValueIntoArray(theArray, 600);
+	printf("Out 4: \n");
+	printCircularArray(theArray);
+
+	free(theArray); // Free allocated memory
 	return 0;
 }
