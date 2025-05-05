@@ -129,6 +129,9 @@
   <ItemGroup>
     <ClCompile Include="paperCircularArray.c" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="paperCircularArray.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
