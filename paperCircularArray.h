@@ -14,7 +14,18 @@
 * This value can be edited to allow for almost any size of buffer, since modulo operations to ensure the CircularArray data
 * stays within the bounds of the size dictated here
 */
+
 #define ARRAY_MAX_SIZE 5 // Defines the maximum size of the circular buffer
+
+// The struct used as the buffer(CircularArray)
+typedef struct CircularArray
+{
+	int array[ARRAY_MAX_SIZE];
+	int elementCount;
+	int read;
+	int write;
+
+} CircularArray;
 
 // Function prototypes
 CircularArray* initializeCircularArray();

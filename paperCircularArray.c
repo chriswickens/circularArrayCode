@@ -6,22 +6,12 @@
 * 
 * Edits from the original code: The original code did not make use of .h files or function prototypes as this was not
 * a requirement for that class at the time and I was still new to C coding. I have since gone back and created the necessary
-* header file (paperCircularArray.h) to encapsulate the macro for the ARRAY_MAX_SIZE and the necessary function prototypes.
+* header file (paperCircularArray.h) to encapsulate the struct for the buffer and the macro for the ARRAY_MAX_SIZE and the necessary function prototypes.
 */
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include "paperCircularArray.h"
-
-// The struct used as the buffer(CircularArray)
-typedef struct CircularArray
-{
-	int array[ARRAY_MAX_SIZE];
-	int elementCount;
-	int read;
-	int write;
-
-} CircularArray;
 
 // Initialize the CircularArray
 CircularArray* initializeCircularArray()
