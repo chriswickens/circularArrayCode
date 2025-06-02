@@ -43,7 +43,7 @@ CircularArray* initializeCircularArray()
 	return newArray;
 }
 
-// Checks if the passed in CircularArray is FULL
+// Checks if the passed in CircularArray is EMPTY
 bool isEmpty(CircularArray* arrayToCheck)
 {
 	// If the elementCount is 0, the CircularArray is empty
@@ -101,7 +101,7 @@ int dequeueFromArray(CircularArray* arrayToDequeue)
 	// Otherwise, begin dequeue process
 	// Get the value that will be dequeued based on the current CircularArray READ location
 	int valueToDequeue = arrayToDequeue->array[arrayToDequeue->read];
-	// Decremement the elementCount (since we are removing an value)
+	// Decrement the elementCount (since we are removing an value)
 	arrayToDequeue->elementCount--;
 	// Update the read location and ensure it is within the bounds of the array size
 	arrayToDequeue->read = (arrayToDequeue->read + 1) % ARRAY_MAX_SIZE;
@@ -126,7 +126,7 @@ void printCircularArray(CircularArray* arrayToPrint)
 	{
 		// Print the index and the value stored there
 		printf("Circular Index: %d, Value at index: %d\n", currentIndex, arrayToPrint->array[currentIndex]);
-		count++; // Incremenet the count
+		count++; // Increment the count
 		// Set the currentIndex to the next index location to print the next value, keep within bounds of array size
 		currentIndex = (currentIndex + 1) % ARRAY_MAX_SIZE;
 	}
@@ -156,7 +156,7 @@ void searchCircularArray(CircularArray* arrayToSearch, int valueToFind)
 			return;
 		}
 
-		// Keep iterating by incremementing the count and the current index
+		// Keep iterating by incrementing the count and the current index
 		count++;
 		currentIndex = (currentIndex + 1) % ARRAY_MAX_SIZE;
 	}
